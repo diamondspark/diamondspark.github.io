@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.axisWhite line{
+  stroke: white;
+}
+
+.axisWhite path{
+  stroke: white;
+}
+
+.axisWhite text{
+  fill: white;
+}
+
+</style>
+<script src="js/d3.v4.min.js"></script>
+<body>
+<div id="textDiv"></div>  
+
+<script>
+const data = [
+  {name: 'Train-Pos', Pneumonia: 450,   Hernia: 62,   Prev_Sur: 540, Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35},
+  {name: 'Train-Neg', Pneumonia: null, Hernia: 304,   Prev_Sur: 85,
+Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35},
+  {name: 'Val-Pos', Pneumonia: 450,   Hernia: 62,   Prev_Sur: 540,
+Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35},
+  {name: 'Val-Neg', Pneumonia: null, Hernia: 304,   Prev_Sur: 850,
+Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35}
+];
+
+
+const margin = { top: 10, right: 10, bottom: 30, left: 50 };
+const width = 500 - margin.left - margin.right;
+const height = 350 - margin.top - margin.bottom;
+
+
+const svg = d3.select('body')
+  .append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+  .append('g')
+    .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+
+const xScale = d3.scaleBand()
+  .domain(data.map(d => d.name))
+  .range([0, width+50])
+  .padding(0.2);
+svg
+  .append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .attr("class", "axisWhite")
+  .call(d3.axisBottom(xScale))
+  .selectAll("text")
+      .style("text-anchor", "middle")
+      .style("font-size","2.2em")
+      .style("font-family", "Raleway")
+      .style("fill","white");
+
+const yScale = d3.scaleLinear()
+  .domain([0, 1000])
+  .range([height, 0]);
+
+svg
+  .append('g')
+  .attr("class", "axisWhite")
+  .call(d3.axisLeft(yScale))
+  .selectAll("text")
+      .style("text-anchor", "right")
+      .style("font-size","1.5em")
+      .style("font-family", "Raleway")
+      .style("fill","white");
+
+
+function render (subject = 'math') {
+  var div = document.getElementById("textDiv");  
+  div.textContent = subject; 
+  div.style.color = "Red";
+  div.style.fontSize = "50px" ; 
+  var text = div.textContent;
+  const update = svg.selectAll('rect')
+    // .data(data.filter(d => d[subject]), d => d.name); //filter out name with no data
+    .data(data); // add all the data even if zero. Needed for transition
+
+  update.exit()
+    .remove();
+
+  update
+    .transition() // NEW
+    .duration(500) // Also NEW
+    .attr('y', d => yScale(d[subject]))
+    .attr('height', d => height - yScale(d[subject]));
+
+
+  update
+    .enter()
+    .append('rect')
+    .style('fill', '#9BE7FF')
+    .attr('x', d => xScale(d.name))
+    .attr('width', d => xScale.bandwidth())
+    .attr('y', d => yScale(d[subject]))
+    .attr('height', d => height - yScale(d[subject]));
+
+}
+
+render('Pneumonia');
+
+var _transitions = [
+      {
+        transitionForward: () => render("Hernia"),
+        index: 1
+      },
+      {
+        transitionForward: () => render("Prev_Sur"),
+        index: 2
+      },
+      {
+        transitionForward: () => render("Pleural_Effusion"),
+        index: 3
+      },
+      {
+        transitionForward: () => render("Ascites"),
+        index: 4
+      },
+      {
+        transitionForward: () => render("Atherosclerosis"),
+        index: 5
+      },
+      {
+        transitionForward: () => render("Cardiomegaly"),
+        index: 6
+      },
+      {
+        transitionForward: () => render("Atelectasis"),
+        index: 7
+      },
+      {
+        transitionForward: () => render("Hydronephrosis"),
+        index: 8
+      },
+      {
+        transitionForward: () => render("GB_Thickening"),
+        index: 9
+      },
+      {
+        transitionForward: () => render("Pulmonary_Edema"),
+        index: 10
+      },
+      {
+        transitionForward: () => render("Lymphadenopathy"),
+        index: 11
+      },
+      {
+        transitionForward: () => render("Enlarged_Liver"),
+        index: 12
+      },
+      {
+        transitionForward: () => render("Aortic_Aneurysm"),
+        index: 13
+      }
+
+    ]
+
+</script>
+</body>
+</html>
