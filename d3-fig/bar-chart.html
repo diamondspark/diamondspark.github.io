@@ -21,18 +21,18 @@
 
 <script>
 const data = [
-  {name: 'Train-Pos', Pneumonia: 450,   Hernia: 62,   Prev_Sur: 540, Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35},
-  {name: 'Train-Neg', Pneumonia: null, Hernia: 304,   Prev_Sur: 85,
-Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35},
-  {name: 'Val-Pos', Pneumonia: 450,   Hernia: 62,   Prev_Sur: 540,
-Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35},
-  {name: 'Val-Neg', Pneumonia: null, Hernia: 304,   Prev_Sur: 850,
-Pleural_Effusion:23, Ascites:324, Atherosclerosis:324, Cardiomegaly:345, Atelectasis:345, Hydronephrosis:657,GB_Thickening:23,Pulmonary_Edema:345, Lymphadenopathy:435, Enlarged_Liver:21, Aortic_Aneurysm:35}
+  {name: 'Train-Pos', Pneumonia: 225,   Hernia: 291,   Prev_Sur: 617, Pleural_Effusion:546, Ascites:236, Atherosclerosis:490, Cardiomegaly:303, Atelectasis:553, Hydronephrosis:46,GB_Thickening:22,Pulmonary_Edema:74, Lymphadenopathy:371, Enlarged_Liver:69, Aortic_Aneurysm:91},
+  {name: 'Train-Neg', Pneumonia: 1023, Hernia: 957,   Prev_Sur: 631,
+Pleural_Effusion:702, Ascites:1012, Atherosclerosis:758, Cardiomegaly:945, Atelectasis:695, Hydronephrosis:1202,GB_Thickening:1226,Pulmonary_Edema:1174, Lymphadenopathy:877, Enlarged_Liver:1179, Aortic_Aneurysm:1157},
+  {name: 'Val-Pos', Pneumonia: 53,   Hernia: 75,   Prev_Sur: 162,
+Pleural_Effusion:127, Ascites:63, Atherosclerosis:130, Cardiomegaly:87, Atelectasis:138, Hydronephrosis:19,GB_Thickening:3,Pulmonary_Edema:20, Lymphadenopathy:113, Enlarged_Liver:17, Aortic_Aneurysm:29},
+  {name: 'Val-Neg', Pneumonia: 259, Hernia: 237,   Prev_Sur: 150,
+Pleural_Effusion:185, Ascites:249, Atherosclerosis:182, Cardiomegaly:225, Atelectasis:174, Hydronephrosis:293,GB_Thickening:309,Pulmonary_Edema:292, Lymphadenopathy:199, Enlarged_Liver:295, Aortic_Aneurysm:283}
 ];
 
 
 const margin = { top: 10, right: 10, bottom: 30, left: 50 };
-const width = 500 - margin.left - margin.right;
+const width = 600 - margin.left - margin.right;
 const height = 350 - margin.top - margin.bottom;
 
 
@@ -46,7 +46,7 @@ const svg = d3.select('body')
 
 const xScale = d3.scaleBand()
   .domain(data.map(d => d.name))
-  .range([0, width+50])
+  .range([0, width])
   .padding(0.2);
 svg
   .append('g')
