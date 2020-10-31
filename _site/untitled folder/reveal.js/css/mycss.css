@@ -1,0 +1,7 @@
+html, body, .mycss{
+  margin: auto;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  position: relative }

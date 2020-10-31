@@ -1,0 +1,370 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/moon.css">
+        <link rel="stylesheet" href="reveal.js/css/custom-gc.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!-- Embed d3.js visualizations using class 'fig-container', 'data-fig-id' 
+                    for the figure ID, and 'data-file' for the path to the html file. When the 'fig-container' class is assigned to a 'section' element (like here),
+                    the visualizations is embedded in the background. When it is assigned to
+                    a different countainer element within a section, the visualizations is embedded
+                    in the slide.
+
+                    To add transitions triggered as fragments, simply add two global variables
+                    to the iframe html 'Collision-Detection.html': 
+                    
+                    1. '_transitions' is an array with functions that for each transition.
+                    2. `_inverse_transitions` is an array with functions that revert each
+                        transition when user navigates back. `_inverse_transitions` can be set to
+                        `[]` if this functionality is not required.
+
+                    The attribute 'data-transitions' for the container element is optional and
+                    overrides the number of transitions in the d3.js visualizations.
+                -->
+                <section>
+					<div class="sl-block" data-block-type="text" style="width: 1068px; left: -37px; top: 210px; height: auto;" data-block-id="988e498a8cdc248cdb290d0d31e755e3">
+    				<div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11; color: rgb(255, 139, 0);">
+      				  <h1>
+            			<strong>Information Retrieval </strong>
+        			</h1>
+    				</div>
+					</div>
+					<div class="sl-block" data-block-type="text" data-block-id="0ac1e0d78b46bb764fd1a7f9a63ba41d" style="height: auto; min-width: 30px; min-height: 30px; width: 700px; left: 167px; top: 323px;">
+    				<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(255, 139, 0);">
+       				 <p><span style="font-size:1.5em">Using Deep Learning for NLP on CT Free Text</span></p>
+    				</div>
+					</div>
+				</section>
+
+				<section>
+
+				<div class="sl-block" data-block-type="text" style="width: 897px; left: 21px; top: 33px; height: auto;" data-block-id="3e790802ad9cabd7d76b2313be765666">
+    <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+        <h2>Problem Statement &amp; Dataset</h2>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 101px; top: 140px; height: auto;" data-block-id="c90f577113b57e991ccd15f8fdce9770">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle" style="z-index: 11;">
+        <p style="text-align:left">
+            <span style="font-size:0.5em">Given free text CT reports of ~122,000 patients, extract the following categorical features</span>
+        </p>
+        <p style="text-align:left">
+            <span style="font-size:0.5em">
+                <strong>Pleural effusion, Cardiomegaly, Ascites , pulmonary edema , Lymphadenopathy, GB thickening, Hydronephrosis , Hernia , atelectasis, Enlarged Liver, Aortic aneurysm, Atherosclerosis, Previous surgery, Pneumonia</strong>
+            </span>
+        </p>
+        <ul>
+            <li style="text-align:left">
+                <span style="font-size:0.5em">Information extraction (IE) is the task of automatically extracting structured information from unstructured and/or semi-structured machine-readable documents.</span>
+            </li>
+            <li style="text-align:left">
+                <span style="font-size:0.5em">Highly task specific and doesn't extend well to cross domains.</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+				</section>
+
+<!-- slide 3-->
+<section>
+<div class="sl-block" data-block-type="text" style="width: 897px; left: 21px; top: 33px; height: auto;" data-block-id="3e790802ad9cabd7d76b2313be765666">
+    <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+        <h2>Problem Statement &amp; Dataset</h2>
+    </div>
+</div>
+ 
+    <div class="row no-margin-top">
+        <div class="col-50 no-margin-top">
+            <div style="height:500px;width:250px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+<strong>Sample Report:</strong>
+
+        ordered: xx/xx/xxxx xx:xx am       patient name: xxx, xxxx          
+location: xxxx               mrn: xxxxxxx                           
+                                   age: xx yrs  sex: m                     
+adm m.d.: xx, xx md         dob: xx/xx/xxxx                         
+exam date:  accession #:   exam code:     order md:                     
+05/04/2009  *xxxxxxx       ctabpelw       mccarthy, moira md            
+history: fever.
+technique: multiple contiguous axial images were obtained from the lung
+bases to the level of the ischial tuberosities following the
+administration of oral and 105 cc omnipaque-300 intravenous contrast.
+additional images of the left lower extremity were obtained from the
+proximal left femur to the left knee.
+comparison: ct angiogram of the abdomen and pelvis dated 4/7/2009.
+findings:
+limited images of the lung bases demonstrate right basilar subsegmental
+atelectasis.
+the liver is normal in size without focal hepatic lesion. the
+gallbladder is present. the spleen, pancreas, right adrenal gland, and
+kidneys are unremarkable. left adrenal nodular thickening is again 
+noted.
+the ascending and proximal transverse colon demonstrates wall thickening
+and adjacent fat infiltration. no evidence of intestinal obstruction is
+seen. the appendix appears normal. 
+mild periportal edema and small volume abdominopelvic ascites are seen.
+a periportal lymph node measures 1.7 x 2.3 cm. subcentimeter bilateral
+inguinal lymph nodes are seen. diffuse atherosclerotic vascular
+calcifications are noted.
+a small amount of subcutaneous emphysema in the left inguinal region is
+likely related to recent surgical intervention evidenced by surgical
+skin staples in the left medial thigh. a hematoma in the left medial
+thigh measures 4.4 x 3.1 cm at the subtrochanteric level and 5.8 x 2.6
+cm at the mid femoral level. several foci of air within the hematoma are
+likely postsurgical. a small amount of subcutaneous edema is noted in 
+the left thigh. 
+no suspicious osseous lesion is identified.
+impression: 
+1. ascending and proximal transverse colitis.
+2. left medial thigh hematoma containing several foci of air, likely
+postsurgical. underlying infection cannot be excluded.
+3. periportal lymphadenopathy.
+4. small volume abdominopelvic ascites.
+  prepared by: bartolotta, roger md                                           
+  study interpreted and report approved by: xxx, xxxx md                
+  electronically signed diagnostic report imaging report                      
+  xx/xx/xxxx xx:xx pm - xx/xx/xxxx xx:xx pm                                   
+  exam complete - signed-off
+
+</div>
+        </div>
+        <div class="col-50 no-margin-top">
+            <div style="height:500px;width:250px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+<strong>Deidentified Report:</strong>
+
+findings:
+limited images of the lung bases demonstrate right basilar subsegmental
+atelectasis.
+the liver is normal in size without focal hepatic lesion. the
+gallbladder is present. the spleen, pancreas, right adrenal gland, and
+kidneys are unremarkable. left adrenal nodular thickening is again 
+noted.
+the ascending and proximal transverse colon demonstrates wall thickening
+and adjacent fat infiltration. no evidence of intestinal obstruction is
+seen. the appendix appears normal. 
+mild periportal edema and small volume abdominopelvic ascites are seen.
+a periportal lymph node measures 1.7 x 2.3 cm. subcentimeter bilateral
+inguinal lymph nodes are seen. diffuse atherosclerotic vascular
+calcifications are noted.
+a small amount of subcutaneous emphysema in the left inguinal region is
+likely related to recent surgical intervention evidenced by surgical
+skin staples in the left medial thigh. a hematoma in the left medial
+thigh measures 4.4 x 3.1 cm at the subtrochanteric level and 5.8 x 2.6
+cm at the mid femoral level. several foci of air within the hematoma are
+likely postsurgical. a small amount of subcutaneous edema is noted in 
+the left thigh. 
+no suspicious osseous lesion is identified.
+impression: 
+1. ascending and proximal transverse colitis.
+2. left medial thigh hematoma containing several foci of air, likely
+postsurgical. underlying infection cannot be excluded.
+3. periportal lymphadenopathy.
+4. small volume abdominopelvic ascites.
+
+</div>
+        </div>
+</section>
+<!-- slide 4 -->
+<section>
+	<h2>Dataset</h2>
+	<h3> Characteristics</h3>
+</section>
+
+<!-- Slide 5 -->
+
+<section >
+
+<div class="col-50 no-margin-top">
+            <p> <span style="font-size:1.0em">Data Distribution for different features</span></p>
+        <div class="fig-container" data-file="d3-fig/bar-chart.html"></div>
+        </div>
+
+
+
+</section>
+<!-- slide 6 -->
+
+<section>
+
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 38px; height: auto;" data-block-id="7b5375ced9b00e9d7309751a5962d0d1">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+        <h2>
+            <span style="color:#FFFF00">
+                <span style="font-size:1.2em">
+                    <strong>Methodology</strong>
+                </span>
+            </span>
+        </h2>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 263px; height: auto;" data-block-id="18c044af55a70273fe81c873cc5d9bf9">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+        <ul>
+            <li>String matching: Look for words from data dictionary in the report. -- 
+                <span style="color:#FF0000">Poor performance.</span>&nbsp;
+            </li>
+            <li>CNN for Ensemble of binary classifiers using word2vec trained on CT reports--- 
+                <span style="color:#FFA500">Average AUC 0.85</span>
+            </li>
+            <li>
+                <span style="text-align:left">CNN for Ensemble of binary classifiers using word2vec trained on PubMed and Wiki--- </span>
+                <span style="color:#00FF00">
+                    <span style="text-align:left">Average AUC 0.96</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</section>
+
+<!-- slide 7 -->
+<section>
+	
+<div class="sl-block" data-block-type="text" style="width: 978px; left: 0px; top: 37px; height: auto;" data-block-id="4555363844995d6d5a69a2f76e0de30f">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;">
+        <h3>Natural Language Processing and Deep Learning</h3>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 769px; height: 330px; left: 111px; top: 315px;" data-block-id="f3ae8abbe1fee44e5bbb0ae888d7590a">
+    <div class="sl-block-content" style="z-index: 12;">
+        <img data-natural-width="1000" data-natural-height="429" style="" src="https://s3.amazonaws.com/media-p.slid.es/uploads/857003/images/4775433/Screen_Shot_2018-04-05_at_3.09.10_PM.png" data-lazy-loaded=""/>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="a98001981fd856b60447330fa4316bee" style="height: auto; min-width: 30px; min-height: 30px; width: 1200px; left: 111px; top: 113px;">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+        <ul>
+            <li>Used Convolutional Neural Network for sentence classification *.</li>
+            <li>Ensembled 14 binary classifiers + 1 multi-class classifier (pleural effusion intensity) to create 1 multi-label classifier.</li>
+        </ul>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="4d4fc42ba35942749958b7190128242d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 189px; top: 645px;">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+        <p>
+            <span style="font-size:0.5em;">* Convolutional Neural Network for sentence classification, Kim, Y, EMNLP 2014</span>
+            <br/>
+        </p>
+    </div>
+</div>
+
+	
+</section>
+
+<!-- slide 8 -->
+
+<section>
+    
+    <div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 82px; height: auto;" data-block-id="7990128cdc62b2c7729929fd41c4111e">
+    <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+        <h1>Word Embedding</h1>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 111px; top: 216px; height: auto;" data-block-id="73d84cdf48048fd3c0fa9ebe83618443">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle" style="z-index: 11;">
+        <ul>
+            <li style="text-align: left;">All deep learning models take as input a vector of numbers.</li>
+            <li style="text-align: left;">For images, traditionally each pixel's intensity is used as input. However in case of text it's not immediately clear how to convert words to numbers that make intuitive sense.</li>
+            <li style="text-align: left;">Bag of Words, Word2Vec, GloVe etc.</li>
+            <li style="text-align: left;">We generate Word2Vec embedding for 122,000 reports. [DEMO]</li>
+        </ul>
+    </div>
+</div>
+
+</section>           
+
+<!-- slide 9 -->
+<section>
+    
+    <div class="sl-block" data-block-type="text" style="width: auto; left: 29px; top: 84px; height: auto;" data-block-id="310661eba9ab165973d1aa97907807b2">
+    <div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+        <h3>Word2Vec* - SkipGram/CBOW</h3>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" style="width: auto; left: 11px; top: 280px; height: auto;" data-block-id="66ecbe5168daac181336bd4ccf28cebb">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat." style="z-index: 13; text-align: left;">
+        <ul>
+            <li>
+                <span style="font-size:0.7em">Word Embedding paradigm based on co-occurrence statistics.</span>
+            </li>
+            <li>
+                <span style="font-size:0.7em">Given a central word, what's the probability of occurrence of&nbsp; surrounding (context) words.</span>
+            </li>
+            <li>
+                <span style="font-size:0.7em">Typically needs huge corpora to meaningfully train. Entire wiki &nbsp;dump is generally used to train general purpose word vectors. [3 million words * 300 features * 4bytes/feature = ~3.35GB] </span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="sl-block" data-block-type="image" style="width: 451px; height: 332px; left: 480px; top: 184px;" data-block-id="5d35713dc80d4c4d87f88f53c610c2fc">
+    <div class="sl-block-content" style="z-index: 12;">
+        <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/857003/images/4775709/Screen_Shot_2018-04-05_at_4.12.23_PM.png" data-natural-width="1540" data-natural-height="1134" style=""/>
+    </div>
+</div>
+<div class="sl-block" data-block-type="text" data-block-id="46ce229e010b7fe1f97d64210a0e8fa8" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 18px; top: 168px;">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+        <p style="text-align: left;">
+            <span style="font-size:0.5em">*Distributed Representations of Words and Phrases and their Compositionality , Mikolov, T. et.al., NIPS 2013</span>
+            <span style="font-size:0.5em"></span>
+        </p>
+    </div>
+</div>
+
+
+
+
+</section>
+
+
+
+     <section class="fig-container"
+                        data-fig-id="fig-collision-detection"
+                        data-file="network_vis.html"
+                        data-transitions="0">
+                    <h2>d3.js plugin for reveal.js</h2>
+
+                    Press right arrow to trigger transitions and left arrow to invert transition.
+                </section>
+                <section>
+					<h2>Hello There</h2>
+					<p>
+						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+					</p>
+				</section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js/lib/js/head.min.js"></script>
+        <script src="reveal.js/js/reveal.js"></script>
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+
+
+
+
+                // transition options: none/fade/slide/convex/concave/zoom
+                transition: 'convex',
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    // d3.js library and plugin
+                    { src: 'reveald3.js' },
+           
+                    {src: 'dist/vis.js'}
+                ]
+            });
+
+        </script>
+    </body>
+</html>
