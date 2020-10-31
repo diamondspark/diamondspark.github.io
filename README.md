@@ -1,1 +1,2 @@
-# diamondspark.github.io
+# mohitpandey7.github.io
+Personal website
