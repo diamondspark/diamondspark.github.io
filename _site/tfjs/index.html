@@ -19,7 +19,7 @@
 
 
 
-<title>Blog Post number 2 - Mohit Pandey Your Name / Site Title</title>
+<title>Tfjs - Mohit Pandey Your Name / Site Title</title>
 
 
 
@@ -29,15 +29,15 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Mohit Pandey Your Name / Site Title">
-<meta property="og:title" content="Blog Post number 2">
+<meta property="og:title" content="Tfjs">
 
 
-  <link rel="canonical" href="https://diamondspark.github.io/posts/2013/08/blog-post-2/">
-  <meta property="og:url" content="https://diamondspark.github.io/posts/2013/08/blog-post-2/">
+  <link rel="canonical" href="https://diamondspark.github.io/tfjs/">
+  <meta property="og:url" content="https://diamondspark.github.io/tfjs/">
 
 
 
-  <meta property="og:description" content="This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.">
+  <meta property="og:description" content="&lt;!doctype html&gt;              ">
 
 
 
@@ -52,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2013-08-14T00:00:00-07:00">
+  <meta property="article:published_time" content="2012-08-14T00:00:00-07:00">
 
 
 
@@ -262,15 +262,15 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Blog Post number 2">
-    <meta itemprop="description" content="This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.">
-    <meta itemprop="datePublished" content="August 14, 2013">
+    <meta itemprop="headline" content="Tfjs">
+    <meta itemprop="description" content="&lt;!doctype html&gt;              ">
+    <meta itemprop="datePublished" content="August 14, 2012">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Blog Post number 2
+          <h1 class="page__title" itemprop="headline">Tfjs
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -284,7 +284,7 @@
         
         
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2013-08-14T00:00:00-07:00">August 14, 2013</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2012-08-14T00:00:00-07:00">August 14, 2012</time></p>
         
         
              
@@ -294,49 +294,184 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+        <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H0NW5Z2MYC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-<h1 id="headings-are-cool">Headings are cool</h1>
+      gtag('config', 'G-H0NW5Z2MYC');
+    </script>
+    <title>Digit Recognition WebApp</title>
+    <meta name="description" content="Simple Machine Learning Model into an WebApp using TensorFlow.js">
+    <meta name="keywords" content="Machine Learning, TensorFlow.js">
+    <meta name="author" content="Carlos Aguayo">
+    <style>
+      body {
+        touch-action: none; /*https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action*/
+        font-family: "Roboto";
+      }
+      h1 {
+        margin: 50px;
+        font-size: 70px;
+        text-align: center;
+      }
+      #paint {
+        border:3px solid red;
+        margin: auto;
+      }
+      #predicted { 
+        font-size: 60px;
+        margin-top: 60px;
+        text-align: center;
+      }
+      #number {
+        border: 3px solid black;
+        margin: auto;
+        margin-top: 30px;
+        text-align: center;
+        vertical-align: middle;
+      }
+      #clear {
+        margin: auto;
+        margin-top: 70px;
+        padding: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!--<script type="text/javascript" src="http://livejs.com/live.js"></script>-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>
+    <h1>Digit Recognition WebApp</h1>
+    <div id="paint">
+      <canvas id="myCanvas"></canvas>
+    </div>
+    <div id="predicted">
+      Recognized digit
+      <div id="number"></div>
+      <button id="clear">Clear</button>
+    </div>
+    <script>
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      $('#paint').css({'width': '60%'});
+      $('#number').css({'width': '30%', 'font-size': '240px'});
+      $('#clear').css({'font-size': '50px'});
+    } else {
+      $('#paint').css({'width': '300px'});
+      $('#number').css({'width': '150px', 'font-size': '120px'});
+      $('#clear').css({'font-size': '35px'});
+    }
 
-<h1 id="you-can-have-many-headings">You can have many headings</h1>
+    var cw = $('#paint').width();
+    $('#paint').css({'height': cw + 'px'});
 
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>
+    cw = $('#number').width();
+    $('#number').css({'height': cw + 'px'});
 
+    // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var compuetedStyle = getComputedStyle(document.getElementById('paint'));
+    canvas.width = parseInt(compuetedStyle.getPropertyValue('width'));
+    canvas.height = parseInt(compuetedStyle.getPropertyValue('height'));
+
+    var mouse = {x: 0, y: 0};
+
+    canvas.addEventListener('mousemove', function(e) {
+      mouse.x = e.pageX - this.offsetLeft;
+      mouse.y = e.pageY - this.offsetTop;
+    }, false);
+
+    context.lineWidth = isMobile ? 60 : 25;
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+    context.strokeStyle = '#0000FF';
+
+    canvas.addEventListener('mousedown', function(e) {
+      context.moveTo(mouse.x, mouse.y);
+      context.beginPath();
+      canvas.addEventListener('mousemove', onPaint, false);
+    }, false);
+
+    canvas.addEventListener('mouseup', function() {
+      $('#number').html('<img id="spinner" src="spinner.gif"/>');
+      canvas.removeEventListener('mousemove', onPaint, false);
+      var img = new Image();
+      img.onload = function() {
+        context.drawImage(img, 0, 0, 28, 28);
+        data = context.getImageData(0, 0, 28, 28).data;
+        var input = [];
+        for(var i = 0; i < data.length; i += 4) {
+          input.push(data[i + 2] / 255);
+        }
+        predict(input);
+      };
+      img.src = canvas.toDataURL('image/png');
+    }, false);
+
+    var onPaint = function() {
+      context.lineTo(mouse.x, mouse.y);
+      context.stroke();
+    };
+
+    tf.loadLayersModel('model/model.json').then(function(model) {
+      window.model = model;
+    });
+
+    // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
+    // Set up touch events for mobile, etc
+    canvas.addEventListener('touchstart', function (e) {
+      var touch = e.touches[0];
+      canvas.dispatchEvent(new MouseEvent('mousedown', {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      }));
+    }, false);
+    canvas.addEventListener('touchend', function (e) {
+      canvas.dispatchEvent(new MouseEvent('mouseup', {}));
+    }, false);
+    canvas.addEventListener('touchmove', function (e) {
+      var touch = e.touches[0];
+      canvas.dispatchEvent(new MouseEvent('mousemove', {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      }));
+    }, false);
+
+    var predict = function(input) {
+      if (window.model) {
+        window.model.predict([tf.tensor(input).reshape([1, 28, 28, 1])]).array().then(function(scores){
+          scores = scores[0];
+          predicted = scores.indexOf(Math.max(...scores));
+          $('#number').html(predicted);
+        });
+      } else {
+        // The model takes a bit to load, if we are too fast, wait
+        setTimeout(function(){predict(input)}, 50);
+      }
+    }
+
+    $('#clear').click(function(){
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      $('#number').html('');
+    });
+    </script>
+  </body>
+</html>
         
       </section>
 
       <footer class="page__meta">
         
         
-
-
-  
-
-
-
-
-  
-  
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      
-      
-      <a href="https://diamondspark.github.io/tags/#category1" class="page__taxonomy-item" rel="tag">category1</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://diamondspark.github.io/tags/#category2" class="page__taxonomy-item" rel="tag">category2</a><span class="sep">, </span>
-    
-      
-      
-      <a href="https://diamondspark.github.io/tags/#cool-posts" class="page__taxonomy-item" rel="tag">cool posts</a>
-    
-    </span>
-  </p>
 
 
 
@@ -350,11 +485,11 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=https://diamondspark.github.io/posts/2013/08/blog-post-2/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=https://diamondspark.github.io/tfjs/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://diamondspark.github.io/posts/2013/08/blog-post-2/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://diamondspark.github.io/tfjs/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://diamondspark.github.io/posts/2013/08/blog-post-2/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://diamondspark.github.io/tfjs/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -362,12 +497,11 @@
 
   <nav class="pagination">
     
-      <a href="https://diamondspark.github.io/posts/2012/08/blog-post-1/" class="pagination--pager" title="Blog Post number 1
+      <a href="https://diamondspark.github.io/index/" class="pagination--pager" title="Index
 ">Previous</a>
     
     
-      <a href="https://diamondspark.github.io/posts/2014/08/blog-post-3/" class="pagination--pager" title="Blog Post number 3
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -396,7 +530,7 @@
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="https://diamondspark.github.io/posts/2012/08/blog-post-4/" rel="permalink">Future Blog Post
+        <a href="https://diamondspark.github.io/index/" rel="permalink">Index
 </a>
       
     </h2>
@@ -412,97 +546,36 @@
     
 
         
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2199-01-01T00:00:00-08:00">January 01, 2199</time></p>
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2012-08-14T00:00:00-07:00">August 14, 2012</time></p>
         
 
     
-    <p class="archive__item-excerpt" itemprop="description"><p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>
-</p>
-    
-    
-    
+    <p class="archive__item-excerpt" itemprop="description"><p>&lt;!DOCTYPE HTML&gt;</p>
+<html>
+  <head>
+    <style>
+      #paint {
+        border:3px solid red;
+        width: 500px;
+        height: 500px;
+      }
+      #predicted {
+        font-size: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <div id="paint">
+      <canvas id="myCanvas"></canvas>
+    </div>
+    <span id="predicted">Predicted number: <span id="number"></span></span>
+    <script>
+    // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
 
-  </article>
-</div>
-
-        
-          
-
-
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://diamondspark.github.io/posts/2012/08/blog-post-4/" rel="permalink">Blog Post number 4
-</a>
-      
-    </h2>
-    
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  
-	  less than 1 minute read
-	
-</p>
-    
-
-        
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2015-08-14T00:00:00-07:00">August 14, 2015</time></p>
-        
-
-    
-    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
-
-</p>
-    
-    
-    
-
-  </article>
-</div>
-
-        
-          
-
-
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="https://diamondspark.github.io/posts/2014/08/blog-post-3/" rel="permalink">Blog Post number 3
-</a>
-      
-    </h2>
-    
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
-
-
-  
-	  less than 1 minute read
-	
-</p>
-    
-
-        
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2014-08-14T00:00:00-07:00">August 14, 2014</time></p>
-        
-
-    
-    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
-
+</script></body></html>
 </p>
     
     
