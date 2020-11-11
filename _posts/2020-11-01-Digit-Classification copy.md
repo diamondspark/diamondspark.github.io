@@ -15,8 +15,9 @@ This page is best viewed <a href ="https://mohitpandey.netlify.app/posts/2020/11
 </p>
 Webapp to recognize handwritten digits between 0 and 9. Model trained 
 using Keras and served using Tensorflow.js
+ <!--more-->
 <iframe src="../../../../files/model/digit-class/tfjs.html"  sandbox="allow-same-origin allow-scripts" width="120%"  height="600"  scrolling="yes" seamless="seamless" frameborder="0" allowfullscreen>
 </iframe>
-<!--more-->
+
 
 
