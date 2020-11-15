@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://diamondspark.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://diamondspark.github.io/" rel="alternate" type="text/html" /><updated>2020-11-15T11:45:32-06:00</updated><id>https://diamondspark.github.io/feed.xml</id><title type="html">Mohit Pandey</title><subtitle>Ph.D. Candidate</subtitle><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><entry><title type="html">Encoder - Attention - Decoder</title><link href="https://diamondspark.github.io/posts/2020/11/En-Att-De/" rel="alternate" type="text/html" title="Encoder - Attention - Decoder" /><published>2020-11-10T00:00:00-06:00</published><updated>2020-11-10T00:00:00-06:00</updated><id>https://diamondspark.github.io/posts/2020/11/Encoder-Att-Decode</id><content type="html" xml:base="https://diamondspark.github.io/posts/2020/11/En-Att-De/">&lt;p&gt;&lt;strong&gt;Explaining Attention Network in Encoder-Decoder setting using Recurrent Neural Networks&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://diamondspark.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://diamondspark.github.io/" rel="alternate" type="text/html" /><updated>2020-11-15T12:53:22-06:00</updated><id>https://diamondspark.github.io/feed.xml</id><title type="html">Mohit Pandey</title><subtitle>Ph.D. Candidate</subtitle><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><entry><title type="html">Encoder - Attention - Decoder</title><link href="https://diamondspark.github.io/posts/2020/11/En-Att-De/" rel="alternate" type="text/html" title="Encoder - Attention - Decoder" /><published>2020-11-10T00:00:00-06:00</published><updated>2020-11-10T00:00:00-06:00</updated><id>https://diamondspark.github.io/posts/2020/11/Encoder-Att-Decode</id><content type="html" xml:base="https://diamondspark.github.io/posts/2020/11/En-Att-De/">&lt;p&gt;&lt;strong&gt;Explaining Attention Network in Encoder-Decoder setting using Recurrent Neural Networks&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Encoder-Decoder paradigm has become extremely popular in deep learning particularly in the space of natural language processing. Attention modules complement encoder-decoder architecture to make learning more close to humans way. I present a gentle introduction to encode-attend-decode. I  provide motivation for each block and explain the math governing the model. Further, I break down the code into digestible bits for each mathematical equation. While there are good explanations to attention mechanism for machine translation task, I will try to explain the same for a sequence tagging task (Named Entity Recognition).&lt;/p&gt;
 
@@ -91,7 +91,7 @@ Each $h_t \in R^h$. Note there are always T hidden units, one corresponding to e
 
     &lt;p&gt;This is defined as importance of the $j^{th}$ word when making inference about the $t^{th}$ word of the decoder. Bahdanau described this for machine translation task where $j \neq t$. In our example of NER however, $j=t $ since there exists a label (PER, MISC, LOC, ORG or None) for each $t \in (1,T)$ of our input sentence. Hence, we’ll have for each class in our labelset, an energy score for every word in the input sentence. For a sentence, &lt;code&gt;I like London&lt;/code&gt;, we’ll have a 3 $(T)$ dimensional vector. $ e_{jt} $ is defined as following&lt;/p&gt;
 
-    &lt;p&gt;\(e_{jt} = V_a^T tanh(W_as_{t-1}+U_ah_j)\) \&lt;/p&gt;
+\[e_{jt} = V_a^T tanh(W_as_{t-1}+U_ah_j)\]
 
     &lt;p&gt;where $s_{t-1}$ is the previous time-step of the decoder. &lt;br /&gt;
 In our example, we can ignore $s_{t-1}$ as there is no dependence on predicted class (tag) of previous word on predicting tag of current word by the decoder. So our energy score $e_j$ becomes&lt;/p&gt;
@@ -106,8 +106,8 @@ In our example, we can ignore $s_{t-1}$ as there is no dependence on predicted c
 
     &lt;p&gt;$h_j \in R^h$ i.e. $R^{1 \times h}$(see &lt;a href=&quot;#encoder&quot;&gt;encoder&lt;/a&gt;)&lt;br /&gt;
 $U_a \in R^{h \times d_a}$ &lt;br /&gt;
-$U_a h_j \in R^{1 \times d_a }$ &lt;br /&gt;
-$tanh(U_a  h_j) \in R^{1 \times d_a}$ &lt;br /&gt;
+$h_jU_a \in R^{1 \times d_a }$ &lt;br /&gt;
+$tanh(h_jU_a) \in R^{1 \times d_a}$ &lt;br /&gt;
 $V_a \in R^{1 \times d_a} $ &lt;br /&gt;
 $V_a^T \in R^{d_a \times 1} $ &lt;br /&gt;
 $[tanh(U_ah_j)]V_a^T \in R^{1}$ &lt;br /&gt;
@@ -340,14 +340,33 @@ This page is best viewed &lt;a href=&quot;https://mohitpandey.netlify.app/posts/
 using Keras and served using Tensorflow.js&lt;/p&gt;
 &lt;iframe src=&quot;../../../../files/model/digit-class/tfjs.html&quot; sandbox=&quot;allow-same-origin allow-scripts&quot; width=&quot;120%&quot; height=&quot;600&quot; scrolling=&quot;yes&quot; seamless=&quot;seamless&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
 &lt;/iframe&gt;
-&lt;!--more--&gt;</content><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><category term="Image Classification" /><category term="MNIST" /><summary type="html">Digit Recognition using Deep Learning This page is best viewed here Webapp to recognize handwritten digits between 0 and 9. Model trained using Keras and served using Tensorflow.js</summary></entry><entry><title type="html">Digit Classification</title><link href="https://diamondspark.github.io/posts/2020/11/digit-class/" rel="alternate" type="text/html" title="Digit Classification" /><published>2020-11-01T00:00:00-05:00</published><updated>2020-11-01T00:00:00-05:00</updated><id>https://diamondspark.github.io/posts/2020/11/Digit-Classification</id><content type="html" xml:base="https://diamondspark.github.io/posts/2020/11/digit-class/">&lt;p&gt;&lt;b&gt;Digit Recognition using Deep Learning&lt;/b&gt;
-&lt;br /&gt;&lt;/p&gt;
-&lt;p&gt;
-This page is best viewed &lt;a href=&quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;&gt;here&lt;/a&gt;
-&lt;/p&gt;
-&lt;p&gt;Webapp to recognize handwritten digits between 0 and 9. Model trained 
-using Keras and served using Tensorflow.js
-&lt;!--more--&gt;&lt;/p&gt;
+&lt;!--more--&gt;</content><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><category term="Image Classification" /><category term="MNIST" /><summary type="html">Digit Recognition using Deep Learning This page is best viewed here Webapp to recognize handwritten digits between 0 and 9. Model trained using Keras and served using Tensorflow.js</summary></entry><entry><title type="html">Digit Classification</title><link href="https://diamondspark.github.io/posts/2020/11/digit-class/" rel="alternate" type="text/html" title="Digit Classification" /><published>2020-11-01T00:00:00-05:00</published><updated>2020-11-01T00:00:00-05:00</updated><id>https://diamondspark.github.io/posts/2020/11/Digit-Classification</id><content type="html" xml:base="https://diamondspark.github.io/posts/2020/11/digit-class/">&lt;script&gt;
+  function onload(){
+    var x = document.URL;
+    if (x!= &quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;){
+      window.location.href = &quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;;
+    }
+    // var x = document.URL;
+    // if (x== &quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;){
+    //   net = document.getElementById(&quot;netlify&quot;);
+    //   net.style.visibility = &quot;hidden&quot;;
+    // }
+    
+  }
+
+
+&lt;/script&gt;
+
+&lt;p&gt;&lt;b&gt;Digit Recognition using Deep Learning&lt;/b&gt;
+&lt;br /&gt;
+&amp;lt;!– &amp;lt;p&amp;gt;&lt;/p&gt;
+&lt;div class=&quot;netlify&quot; id=&quot;netlify&quot;&gt;This page is best viewed &lt;a href=&quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;&gt;here&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&amp;lt;/p&amp;gt; –&amp;gt;
+Webapp to recognize handwritten digits between 0 and 9. Model trained 
+using Keras and served using Tensorflow.js&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;html&gt;
    &lt;head&gt;
@@ -398,7 +417,7 @@ using Keras and served using Tensorflow.js
          }
       &lt;/style&gt;
    &lt;/head&gt;
-   &lt;body&gt;
+   &lt;body onload=&quot;onload()&quot;&gt;
       &lt;!--&lt;script type=&quot;text/javascript&quot; src=&quot;http://livejs.com/live.js&quot;&gt;&lt;/script&gt;--&gt;
       &lt;script src=&quot;https://code.jquery.com/jquery-2.2.4.min.js&quot;&gt;&lt;/script&gt;
       &lt;script src=&quot;https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js&quot;&gt;&lt;/script&gt;
@@ -519,7 +538,7 @@ using Keras and served using Tensorflow.js
          });
       &lt;/script&gt;
    &lt;/body&gt;
-&lt;/html&gt;</content><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><category term="Image Classification" /><category term="MNIST" /><summary type="html">Digit Recognition using Deep Learning This page is best viewed here Webapp to recognize handwritten digits between 0 and 9. Model trained using Keras and served using Tensorflow.js</summary></entry><entry><title type="html">Tfjs</title><link href="https://diamondspark.github.io/tfjs/" rel="alternate" type="text/html" title="Tfjs" /><published>2012-08-14T00:00:00-05:00</published><updated>2012-08-14T00:00:00-05:00</updated><id>https://diamondspark.github.io/tfjs</id><content type="html" xml:base="https://diamondspark.github.io/tfjs/">&lt;!doctype html&gt;
+&lt;/html&gt;</content><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><category term="Image Classification" /><category term="MNIST" /><summary type="html">Digit Recognition using Deep Learning &amp;lt;!– &amp;lt;p&amp;gt; This page is best viewed here &amp;lt;/p&amp;gt; –&amp;gt; Webapp to recognize handwritten digits between 0 and 9. Model trained using Keras and served using Tensorflow.js</summary></entry><entry><title type="html">Tfjs</title><link href="https://diamondspark.github.io/tfjs/" rel="alternate" type="text/html" title="Tfjs" /><published>2012-08-14T00:00:00-05:00</published><updated>2012-08-14T00:00:00-05:00</updated><id>https://diamondspark.github.io/tfjs</id><content type="html" xml:base="https://diamondspark.github.io/tfjs/">&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
     &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;
