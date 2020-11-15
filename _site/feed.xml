@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://diamondspark.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://diamondspark.github.io/" rel="alternate" type="text/html" /><updated>2020-11-15T13:02:08-06:00</updated><id>https://diamondspark.github.io/feed.xml</id><title type="html">Mohit Pandey</title><subtitle>Ph.D. Candidate</subtitle><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><entry><title type="html">Encoder - Attention - Decoder</title><link href="https://diamondspark.github.io/posts/2020/11/En-Att-De/" rel="alternate" type="text/html" title="Encoder - Attention - Decoder" /><published>2020-11-10T00:00:00-06:00</published><updated>2020-11-10T00:00:00-06:00</updated><id>https://diamondspark.github.io/posts/2020/11/Encoder-Att-Decode</id><content type="html" xml:base="https://diamondspark.github.io/posts/2020/11/En-Att-De/">&lt;p&gt;&lt;strong&gt;Explaining Attention Network in Encoder-Decoder setting using Recurrent Neural Networks&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://diamondspark.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://diamondspark.github.io/" rel="alternate" type="text/html" /><updated>2020-11-15T13:05:45-06:00</updated><id>https://diamondspark.github.io/feed.xml</id><title type="html">Mohit Pandey</title><subtitle>Ph.D. Candidate</subtitle><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><entry><title type="html">Encoder - Attention - Decoder</title><link href="https://diamondspark.github.io/posts/2020/11/En-Att-De/" rel="alternate" type="text/html" title="Encoder - Attention - Decoder" /><published>2020-11-10T00:00:00-06:00</published><updated>2020-11-10T00:00:00-06:00</updated><id>https://diamondspark.github.io/posts/2020/11/Encoder-Att-Decode</id><content type="html" xml:base="https://diamondspark.github.io/posts/2020/11/En-Att-De/">&lt;p&gt;&lt;strong&gt;Explaining Attention Network in Encoder-Decoder setting using Recurrent Neural Networks&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Encoder-Decoder paradigm has become extremely popular in deep learning particularly in the space of natural language processing. Attention modules complement encoder-decoder architecture to make learning more close to humans way. I present a gentle introduction to encode-attend-decode. I  provide motivation for each block and explain the math governing the model. Further, I break down the code into digestible bits for each mathematical equation. While there are good explanations to attention mechanism for machine translation task, I will try to explain the same for a sequence tagging task (Named Entity Recognition).&lt;/p&gt;
 
@@ -345,8 +345,7 @@ using Keras and served using Tensorflow.js&lt;/p&gt;
     var x = document.URL;
     console.log(x);
     console.log(typeof x);
-    console.log(x== &quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;)
-
+    console.log(x== &quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;);
 
     if (x== &quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;){
       net = document.getElementById(&quot;netlify&quot;);
@@ -358,7 +357,7 @@ using Keras and served using Tensorflow.js&lt;/p&gt;
 
 &lt;/script&gt;
 
-&lt;p&gt;&lt;b&gt;Digit 2 Recognition using Deep Learning&lt;/b&gt;
+&lt;p&gt;&lt;b&gt;Digit 3 Recognition using Deep Learning&lt;/b&gt;
 &lt;br /&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;div class=&quot;netlify&quot; id=&quot;netlify&quot;&gt;This page is best viewed &lt;a href=&quot;https://mohitpandey.netlify.app/posts/2020/11/digit-class/&quot;&gt;here&lt;/a&gt;
@@ -538,7 +537,7 @@ using Keras and served using Tensorflow.js&lt;/p&gt;
          });
       &lt;/script&gt;
    &lt;/body&gt;
-&lt;/html&gt;</content><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><category term="Image Classification" /><category term="MNIST" /><summary type="html">Digit 2 Recognition using Deep Learning This page is best viewed here Webapp to recognize handwritten digits between 0 and 9. Model trained using Keras and served using Tensorflow.js</summary></entry><entry><title type="html">Tfjs</title><link href="https://diamondspark.github.io/tfjs/" rel="alternate" type="text/html" title="Tfjs" /><published>2012-08-14T00:00:00-05:00</published><updated>2012-08-14T00:00:00-05:00</updated><id>https://diamondspark.github.io/tfjs</id><content type="html" xml:base="https://diamondspark.github.io/tfjs/">&lt;!doctype html&gt;
+&lt;/html&gt;</content><author><name>Mohit Pandey</name><email>pandey.mohitk@gmail.com</email></author><category term="Image Classification" /><category term="MNIST" /><summary type="html">Digit 3 Recognition using Deep Learning This page is best viewed here Webapp to recognize handwritten digits between 0 and 9. Model trained using Keras and served using Tensorflow.js</summary></entry><entry><title type="html">Tfjs</title><link href="https://diamondspark.github.io/tfjs/" rel="alternate" type="text/html" title="Tfjs" /><published>2012-08-14T00:00:00-05:00</published><updated>2012-08-14T00:00:00-05:00</updated><id>https://diamondspark.github.io/tfjs</id><content type="html" xml:base="https://diamondspark.github.io/tfjs/">&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
     &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;
