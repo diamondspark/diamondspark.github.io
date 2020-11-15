@@ -10,6 +10,11 @@ tags:
 <script >
   function click(){
     var x = document.URL;
+    console.log(x);
+    console.log(typeof x);
+    console.log(x== "https://mohitpandey.netlify.app/posts/2020/11/digit-class/")
+
+
     if (x== "https://mohitpandey.netlify.app/posts/2020/11/digit-class/"){
       net = document.getElementById("netlify");
       net.style.visibility = "hidden";
@@ -20,7 +25,7 @@ tags:
 
 </script>
 
-<b>Digit 1 Recognition using Deep Learning</b>
+<b>Digit 2 Recognition using Deep Learning</b>
 <br>
 <p>
 <div class= "netlify" id="netlify">This page is best viewed <a href ="https://mohitpandey.netlify.app/posts/2020/11/digit-class/">here</a>
