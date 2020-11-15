@@ -8,27 +8,23 @@ tags:
   - MNIST
 ---
 <script >
-  function onload(){
+  function click(){
     var x = document.URL;
-    if (x!= "https://mohitpandey.netlify.app/posts/2020/11/digit-class/"){
-      window.location.href = "https://mohitpandey.netlify.app/posts/2020/11/digit-class/";
+    if (x== "https://mohitpandey.netlify.app/posts/2020/11/digit-class/"){
+      net = document.getElementById("netlify");
+      net.style.visibility = "hidden";
     }
-    // var x = document.URL;
-    // if (x== "https://mohitpandey.netlify.app/posts/2020/11/digit-class/"){
-    //   net = document.getElementById("netlify");
-    //   net.style.visibility = "hidden";
-    // }
     
   }
 
 
 </script>
 
-<b>Digit Recognition using Deep Learning</b>
+<b>Digit 1 Recognition using Deep Learning</b>
 <br>
-<!-- <p>
+<p>
 <div class= "netlify" id="netlify">This page is best viewed <a href ="https://mohitpandey.netlify.app/posts/2020/11/digit-class/">here</a>
-</div></p> -->
+</div></p>
 Webapp to recognize handwritten digits between 0 and 9. Model trained 
 using Keras and served using Tensorflow.js
 
@@ -84,7 +80,7 @@ using Keras and served using Tensorflow.js
          }
       </style>
    </head>
-   <body onload="onload()">
+   <body onload="click()">
       <!--<script type="text/javascript" src="http://livejs.com/live.js"></script>-->
       <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>
